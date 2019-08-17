@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
     state = {
         term: ' '
     };
+
     handleChange = (event) => {
         this.setState({
             term: event.target.value
         });
     };
+
     handleSubmit = event => {
         event.preventDefault();
         this.props.handleFormSubmit(this.state.term);
@@ -16,10 +18,11 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <div className='search-bar ui segment'>
-                <form onSubmit={this.handleSubmit} className='ui form'>
-                    <div className='field'>
-                        <input onChange={this.handleChange} name='video-search' type="text" value={this.state.term}/>
+            <div className='search-bar'>
+                <form onSubmit={this.handleSubmit} >
+                    <div>
+                        <input 
+                        onChange={this.handleChange} name='video-search' type="text" value={this.state.term}/>
                     </div>
                 </form>
             </div>
